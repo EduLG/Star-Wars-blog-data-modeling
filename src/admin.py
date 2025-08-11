@@ -1,16 +1,11 @@
-import os
-from flask_admin import Admin
-from models import db, User
-from flask_admin.contrib.sqla import ModelView
+from django.contrib import admin
+from .models import User, Character, Planet, Vehicle, FavoriteCharacter, FavoritePlanet, FavoriteVehicle
 
-def setup_admin(app):
-    app.secret_key = os.environ.get('FLASK_APP_KEY', 'sample key')
-    app.config['FLASK_ADMIN_SWATCH'] = 'cerulean'
-    admin = Admin(app, name='4Geeks Admin', template_mode='bootstrap3')
 
-    
-    # Add your models here, for example this is how we add a the User model to the admin
-    admin.add_view(ModelView(User, db.session))
-
-    # You can duplicate that line to add mew models
-    # admin.add_view(ModelView(YourModelName, db.session))
+admin.site.register(User)
+admin.site.register(Character)
+admin.site.register(Planet)
+admin.site.register(Vehicle)
+admin.site.register(FavoriteCharacter)
+admin.site.register(FavoritePlanet)
+admin.site.register(FavoriteVehicle)
